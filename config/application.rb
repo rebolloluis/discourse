@@ -152,7 +152,7 @@ module Discourse
       locales/i18n.js
       discourse/lib/webauthn.js
       confirm-new-email/confirm-new-email.js
-      confirm-new-email/confirm-new-email.no-module.js
+      confirm-new-email/bootstrap.js
       onpopstate-handler.js
       embed-application.js
     }
