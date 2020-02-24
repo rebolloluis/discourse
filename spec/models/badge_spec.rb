@@ -146,8 +146,7 @@ describe Badge do
       BadgeGranter.backfill(quoted_post_badge)
       user_badge = post2.user.user_badges.find_by(badge_id: quoted_post_badge.id)
 
-      expect(user_badge.granted_at).to eq_time(post2.created_at)
-
+      expect(user_badge.granted_at).to eq(post2.created_at)
     end
   end
 

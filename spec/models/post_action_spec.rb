@@ -729,7 +729,7 @@ describe PostAction do
         topic_status_update = TopicTimer.last
 
         expect(topic_status_update.topic).to eq(topic)
-        expect(topic_status_update.execute_at).to be_within(1.second).of(1.hour.from_now)
+        expect(topic_status_update.execute_at).to eq(1.hour.from_now)
         expect(topic_status_update.status_type).to eq(TopicTimer.types[:open])
       end
 
@@ -760,7 +760,7 @@ describe PostAction do
         expect(topic.reload.closed).to eq(true)
 
         timer = TopicTimer.last
-        expect(timer.execute_at).to eq_time(1.hour.from_now)
+        expect(timer.execute_at).to eq(1.hour.from_now)
 
         freeze_time timer.execute_at
         Jobs.expects(:enqueue_in).with(

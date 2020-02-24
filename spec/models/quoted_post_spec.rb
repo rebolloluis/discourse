@@ -83,8 +83,7 @@ describe QuotedPost do
 
     quote.reload
 
-    expect(original_date).to eq_time(quote.created_at)
-
+    expect(original_date).to eq(quote.created_at)
     expect(post2.reply_quoted).to eq(false)
   end
 end

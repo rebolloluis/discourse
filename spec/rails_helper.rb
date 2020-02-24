@@ -153,6 +153,12 @@ else
   end
 end
 
+original_now = Time.singleton_method(:now)
+
+Time.redefine_singleton_method(:now) do
+  at(original_now.call.round)
+end
+
 RSpec.configure do |config|
   config.fail_fast = ENV['RSPEC_FAIL_FAST'] == "1"
   config.silence_filter_announcements = ENV['RSPEC_SILENCE_FILTER_ANNOUNCEMENTS'] == "1"
@@ -353,6 +359,8 @@ def freeze_time(now = Time.now)
     ensure
       unfreeze_time
     end
+  else
+    time
   end
 end
 
